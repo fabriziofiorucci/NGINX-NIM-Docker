@@ -1,0 +1,95 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-nim
+  labels:
+    app: nginx-nim
+spec:
+  selector:
+    matchLabels:
+      app: nginx-nim
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: nginx-nim
+    spec:
+      containers:
+      - name: nginx-nim
+        image: registry.ff.lan:31005/nginx-nim:2.0
+        ports:
+        - name: grpc
+          containerPort: 10000
+        - name: http
+          containerPort: 11000
+        volumeMounts:
+        - name: nim-config
+          mountPath: /etc/nginx-manager/nginx-manager.conf
+          subPath: nginx-manager.conf
+        - name: nim-license
+          mountPath: /etc/nginx-manager/nginx-manager.lic
+          subPath: nginx-manager.lic
+      volumes:
+      - name: nim-config
+        configMap:
+          name: nim-config
+      - name: nim-license
+        configMap:
+          name: nim-license
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-nim
+  labels:
+    app: nginx-nim
+spec:
+  ports:
+  - name: http
+    port: 11000
+  selector:
+    app: nginx-nim
+  type: ClusterIP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-nim-grpc
+  labels:
+    app: nginx-nim
+spec:
+  ports:
+  - name: grpc
+    port: 10000
+    nodePort: 31100
+  selector:
+    app: nginx-nim
+  type: NodePort
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: nginx-nim
+  annotations:
+    nginx.org/proxy-connect-timeout: "30s"
+    nginx.org/proxy-read-timeout: "20s"
+    nginx.org/client-max-body-size: "4m"
+    nginx.com/health-checks: "true"
+  labels:
+    app: nginx-nim
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: nginx-nim.nginx.ff.lan
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: nginx-nim
+                port:
+                  number: 11000
