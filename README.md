@@ -12,7 +12,9 @@ This repo creates a docker image for NGINX Instance Manager so that it can be ru
 4. Edit the provided sample configuration file nim-files/nginx-manager.conf if needed
 5. Build NIM Docker image using:
 
+```
 ./scripts/buildNIM.sh [NIM_DEBFILE] [target Docker image name]
+```
 
 for instance:
 
