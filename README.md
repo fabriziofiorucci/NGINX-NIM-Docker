@@ -48,6 +48,10 @@ NGINX Instances can push their analytics/data to the containerized NIM instance 
 server: nginx-nim.nginx.ff.lan:31100
 ```
 
+## Data persistence
+
+If data persistence is needed across restarts, a persistentVolume for the /data directory can be used.
+
 # Example
 
 ## Docker image build
