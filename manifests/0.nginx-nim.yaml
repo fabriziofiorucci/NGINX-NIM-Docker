@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: nginx-nim
-        image: registry.ff.lan:31005/nginx-nim:2.0
+        image: your.registry.tld/nginx-nim:tag
         ports:
         - name: grpc
           containerPort: 10000

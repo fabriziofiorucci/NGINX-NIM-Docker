@@ -14,15 +14,19 @@ This repo creates a docker image for NGINX Instance Manager so that it can be ru
 
 ```
 ./scripts/buildNIM.sh [NIM_DEBFILE] [target Docker image name]
-```
 
 for instance:
 
 ./scripts/buildNIM.sh ./nim-files/nginx-manager_1.0.3-362724380_amd64.deb your.registry.tld/nginx-nim:tag
+```
 
 this builds the image and pushes it to a private registry
 
-6. Edit manifests/0.nginx-nim.yaml and change the line "image: your.registry.tld/nginx-nim:tag" specifying the image name
+6. Edit manifests/0.nginx-nim.yaml and specify the correct image by modifying the line
+
+```
+image: your.registry.tld/nginx-nim:tag"
+```
 
 7. Start and stop using
 
