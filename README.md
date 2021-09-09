@@ -25,23 +25,28 @@ this builds the image and pushes it to a private registry
 6. Edit manifests/0.nginx-nim.yaml and specify the correct image by modifying the line
 
 ```
-image: your.registry.tld/nginx-nim:tag"
+image: your.registry.tld/nginx-nim:tag
 ```
 
 7. Start and stop using
 
+```
 ./scripts/nimDockerStart.sh start
 ./scripts/nimDockerStart.sh stop
+```
 
 8. After starting NIM, it will be accessible at:
 
+```
 NIM GUI: http://nginx-nim.nginx.ff.lan
 NIM gRPC port: nginx-nim.nginx.ff.lan:31100
+```
 
 NGINX Instances can push their analytics/data to the containerized NIM instance by changing in /etc/nginx-agent/nginx-agent.conf the line:
 
+```
 server: nginx-nim.nginx.ff.lan:31100
-
+```
 
 # Example
 
