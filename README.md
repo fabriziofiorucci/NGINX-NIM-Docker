@@ -2,7 +2,7 @@
 
 ## Description
 
-This repo creates a docker image for NGINX Instance Manager so that it can be run on Kubernetes/Openshift
+This repo creates a docker image for NGINX Instance Manager (NIM) so that it can be run on Kubernetes/Openshift.
 
 ## How to build
 
