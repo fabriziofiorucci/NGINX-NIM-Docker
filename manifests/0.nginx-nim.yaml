@@ -22,6 +22,8 @@ spec:
           containerPort: 10000
         - name: http
           containerPort: 11000
+        - name: instancecounter
+          containerPort: 5000
         volumeMounts:
         - name: nim-config
           mountPath: /etc/nginx-manager/nginx-manager.conf
@@ -48,6 +50,8 @@ spec:
   ports:
   - name: http
     port: 11000
+  - name: instancecounter
+    port: 5000
   selector:
     app: nginx-nim
   type: ClusterIP
@@ -93,3 +97,10 @@ spec:
                 name: nginx-nim
                 port:
                   number: 11000
+          - path: /instances
+            pathType: Prefix
+            backend:
+              service:
+                name: nginx-nim
+                port:
+                  number: 5000

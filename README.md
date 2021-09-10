@@ -3,6 +3,7 @@
 ## Description
 
 This repo creates a docker image for NGINX Instance Manager (NIM, https://www.nginx.com/products/nginx-instance-manager/) so that it can be run on Kubernetes/Openshift.
+The image can optionally be built with NGINX Instance Counter support (see https://github.com/fabriziofiorucci/NGINX-InstanceCounter)
 
 ## How to build
 
@@ -13,14 +14,14 @@ This repo creates a docker image for NGINX Instance Manager (NIM, https://www.ng
 5. Build NIM Docker image using:
 
 ```
-./scripts/buildNIM.sh [NIM_DEBFILE] [target Docker image name]
+./scripts/buildNIM.sh [NIM_DEBFILE] [target Docker image name] [counter enabled (true|false)]
 
 for instance:
 
-./scripts/buildNIM.sh ./nim-files/nginx-manager_1.0.3-362724380_amd64.deb your.registry.tld/nginx-nim:tag
+./scripts/buildNIM.sh ./nim-files/nginx-manager_1.0.3-362724380_amd64.deb your.registry.tld/nginx-nim:tag true
 ```
 
-this builds the image and pushes it to a private registry
+this builds the image and pushes it to a private registry. The last parameter (to be set to either "true" or "false") specifies if NGINX Instance Counter (https://github.com/fabriziofiorucci/NGINX-InstanceCounter) shall be included in the image being built
 
 6. Edit manifests/0.nginx-nim.yaml and specify the correct image by modifying the line
 
@@ -40,6 +41,7 @@ image: your.registry.tld/nginx-nim:tag
 ```
 NIM GUI: http://nginx-nim.nginx.ff.lan
 NIM gRPC port: nginx-nim.nginx.ff.lan:31100
+Instance counter REST API (if enabled at build time): http://nginx-nim.nginx.ff.lan/instances (see the documentation at https://github.com/fabriziofiorucci/NGINX-InstanceCounter)
 ```
 
 NGINX Instances can push their analytics/data to the containerized NIM instance by changing in /etc/nginx-agent/nginx-agent.conf the line:
@@ -61,7 +63,7 @@ If data persistence is needed across restarts, a persistentVolume for the /data 
 ## Docker image build
 
 ```
-$ ./scripts/buildNIM.sh ./nim-files/nginx-manager_1.0.3-362724380_amd64.deb registry.ff.lan:31005/nginx-nim:1.0
+$ ./scripts/buildNIM.sh ./nim-files/nginx-manager_1.0.3-362724380_amd64.deb registry.ff.lan:31005/nginx-nim:1.0 true
 ==> Building NIM docker image
 Sending build context to Docker daemon  34.29MB
 Step 1/10 : FROM ubuntu:latest
@@ -93,8 +95,9 @@ nginx-nim-78df44bdb-8vdr7   1/1     Running   0          20s   10.244.1.58   f5-
 ```
 
 NIM GUI is now reachable at:
-- Web GUI: http://nginx-nim.nginx.ff.lan/ui/
+- Web GUI: http://nginx-nim.nginx.ff.lan
 - gRPC: nginx-nim.nginx.ff.lan:31100
+- Instance counter: http://nginx-nim.nginx.ff.lan/instances
 
 ## Stopping NIM
 
