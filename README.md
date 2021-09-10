@@ -2,13 +2,13 @@
 
 ## Description
 
-This repo creates a docker image for NGINX Instance Manager (NIM) so that it can be run on Kubernetes/Openshift.
+This repo creates a docker image for NGINX Instance Manager (NIM, https://www.nginx.com/products/nginx-instance-manager/) so that it can be run on Kubernetes/Openshift.
 
 ## How to build
 
 1. Clone this repo
 2. Download NIM .deb installation file (ie. nginx-manager_1.0.3-362724380_amd64.deb) and copy it into nim-files/
-3. Get a valid NIM license (nginx-manager.lic) and copy into nim-files/
+3. Get a valid NIM license (nginx-manager.lic) and copy it into nim-files/
 4. Edit the provided sample configuration file nim-files/nginx-manager.conf if needed
 5. Build NIM Docker image using:
 
@@ -47,6 +47,10 @@ NGINX Instances can push their analytics/data to the containerized NIM instance 
 ```
 server: nginx-nim.nginx.ff.lan:31100
 ```
+
+## Tested NIM releases
+
+This repo has been tested with NIM 1.0.3.
 
 ## Data persistence
 
