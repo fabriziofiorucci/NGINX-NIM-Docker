@@ -3,7 +3,7 @@ ARG NIM_DEBFILE
 
 RUN apt-get update
 
-RUN apt-get install -y -q build-essential python3-pip python3-dev python3-simplejson git nano curl
+RUN apt-get install -y -q build-essential git nano curl jq
 
 RUN mkdir deployment
 
