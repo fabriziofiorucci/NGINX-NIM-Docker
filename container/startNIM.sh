@@ -7,8 +7,6 @@ then
 	export NGINX_CONTROLLER_USERNAME="username@domain"
 	export NGINX_CONTROLLER_PASSWORD="thepassword"
 
-	export STATS_PUSH_ENABLE="false"
-
 	python3 /deployment/app.py &
 fi
 

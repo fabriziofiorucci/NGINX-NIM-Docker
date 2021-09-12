@@ -31,6 +31,20 @@ spec:
         - name: nim-license
           mountPath: /etc/nginx-manager/nginx-manager.lic
           subPath: nginx-manager.lic
+        env:
+          ### Instance counter Push mode
+          - name: STATS_PUSH_ENABLE
+            #value: "true"
+            value: "false"
+          - name: STATS_PUSH_MODE
+            value: CUSTOM
+            #value: NGINX_PUSH
+          - name: STATS_PUSH_URL
+            value: "http://192.168.1.5/callHome"
+            #value: "http://pushgateway.nginx.ff.lan"
+          ### Push interval in seconds
+          - name: STATS_PUSH_INTERVAL
+            value: "10"
       volumes:
       - name: nim-config
         configMap:
@@ -98,6 +112,13 @@ spec:
                 port:
                   number: 11000
           - path: /instances
+            pathType: Prefix
+            backend:
+              service:
+                name: nginx-nim
+                port:
+                  number: 5000
+          - path: /metrics
             pathType: Prefix
             backend:
               service:

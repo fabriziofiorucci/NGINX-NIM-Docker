@@ -41,7 +41,10 @@ image: your.registry.tld/nginx-nim:tag
 ```
 NIM GUI: http://nginx-nim.nginx.ff.lan
 NIM gRPC port: nginx-nim.nginx.ff.lan:31100
-Instance counter REST API (if enabled at build time): http://nginx-nim.nginx.ff.lan/instances (see the documentation at https://github.com/fabriziofiorucci/NGINX-InstanceCounter)
+Instance counter REST API (if enabled at build time - see the documentation at https://github.com/fabriziofiorucci/NGINX-InstanceCounter):
+- http://nginx-nim.nginx.ff.lan/instances
+- http://nginx-nim.nginx.ff.lan/metrics
+- Push mode (configured through env variables in manifests/0.nginx-nim.yaml)
 ```
 
 NGINX Instances can push their analytics/data to the containerized NIM instance by changing in /etc/nginx-agent/nginx-agent.conf the line:
