@@ -117,7 +117,7 @@ nginx-nim-78df44bdb-8vdr7   1/1     Running   0          20s   10.244.1.58   f5-
 NIM GUI is now reachable at:
 - Web GUI: http://nginx-nim.nginx.ff.lan
 - gRPC: nginx-nim.nginx.ff.lan:31100
-- Instance counter: http://nginx-nim.nginx.ff.lan/instances
+- Instance counter: http://nginx-nim.nginx.ff.lan/instances and http://nginx-nim.nginx.ff.lan/metrics and push mode
 
 ## Stopping NIM
 
