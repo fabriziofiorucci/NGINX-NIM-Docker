@@ -29,6 +29,23 @@ this builds the image and pushes it to a private registry. The last parameter (t
 image: your.registry.tld/nginx-nim:tag
 ```
 
+```
+        env:
+          ### Instance counter Push mode
+          - name: STATS_PUSH_ENABLE
+            #value: "true"
+            value: "false"
+          - name: STATS_PUSH_MODE
+            value: CUSTOM
+            #value: NGINX_PUSH
+          - name: STATS_PUSH_URL
+            value: "http://192.168.1.5/callHome"
+            #value: "http://pushgateway.nginx.ff.lan"
+          ### Push interval in seconds
+          - name: STATS_PUSH_INTERVAL
+            value: "10"
+```
+
 7. Start and stop using
 
 ```
