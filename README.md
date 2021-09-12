@@ -23,7 +23,7 @@ for instance:
 
 this builds the image and pushes it to a private registry. The last parameter (to be set to either "true" or "false") specifies if NGINX Instance Counter (https://github.com/fabriziofiorucci/NGINX-InstanceCounter) shall be included in the image being built
 
-6. Edit manifests/0.nginx-nim.yaml and specify the correct image by modifying the line
+6. Edit manifests/0.nginx-nim.yaml and specify the correct image by modifying the "image" line. Additionally modify the "env:" section if you need NGINX Instance Counter to push instances data to a remote collector
 
 ```
 image: your.registry.tld/nginx-nim:tag
