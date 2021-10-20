@@ -12,5 +12,5 @@ COUNTER=$3
 
 echo "==> Building NIM docker image"
 
-docker build --build-arg NIM_DEBFILE=$DEBFILE --build-arg BUILD_WITH_COUNTER=$COUNTER -t $IMGNAME .
+docker build --no-cache --build-arg NIM_DEBFILE=$DEBFILE --build-arg BUILD_WITH_COUNTER=$COUNTER -t $IMGNAME .
 docker push $IMGNAME

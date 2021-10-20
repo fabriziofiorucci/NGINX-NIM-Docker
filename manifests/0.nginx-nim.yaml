@@ -111,14 +111,14 @@ spec:
                 name: nginx-nim
                 port:
                   number: 11000
-          - path: /instances
+          - path: /counter/metrics
             pathType: Prefix
             backend:
               service:
                 name: nginx-nim
                 port:
                   number: 5000
-          - path: /metrics
+          - path: /counter/instances
             pathType: Prefix
             backend:
               service:
