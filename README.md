@@ -8,7 +8,7 @@ The image can optionally be built with NGINX Instance Counter support (see https
 ## How to build
 
 1. Clone this repo
-2. Download NIM .deb installation file (ie. nginx-manager_1.0.3-362724380_amd64.deb) and copy it into nim-files/
+2. Download NIM .deb installation file (ie. nginx-manager_1.0.4-415830014_amd64.deb) and copy it into nim-files/
 3. Get a valid NIM license (nginx-manager.lic) and copy it into nim-files/
 4. Edit the provided sample configuration file nim-files/nginx-manager.conf if needed
 5. Build NIM Docker image using:
@@ -18,7 +18,7 @@ The image can optionally be built with NGINX Instance Counter support (see https
 
 for instance:
 
-./scripts/buildNIM.sh ./nim-files/nginx-manager_1.0.3-362724380_amd64.deb your.registry.tld/nginx-nim:tag true
+./scripts/buildNIM.sh ./nim-files/nginx-manager_1.0.4-415830014_amd64.deb your.registry.tld/nginx-nim:tag true
 ```
 
 this builds the image and pushes it to a private registry. The last parameter (to be set to either "true" or "false") specifies if NGINX Instance Counter (https://github.com/fabriziofiorucci/NGINX-InstanceCounter) shall be included in the image being built
@@ -72,7 +72,7 @@ server: nginx-nim.nginx.ff.lan:31100
 
 ## Tested NIM releases
 
-This repo has been tested with NIM 1.0.3.
+This repo has been tested with NIM 1.0.3 and 1.0.4.
 
 ## Data persistence
 
@@ -83,7 +83,7 @@ If data persistence is needed across restarts, a persistentVolume for the /data 
 ## Docker image build
 
 ```
-$ ./scripts/buildNIM.sh ./nim-files/nginx-manager_1.0.3-362724380_amd64.deb registry.ff.lan:31005/nginx-nim:1.0 true
+$ ./scripts/buildNIM.sh ./nim-files/nginx-manager_1.0.4-415830014_amd64.deb registry.ff.lan:31005/nginx-nim:1.0 true
 ==> Building NIM docker image
 Sending build context to Docker daemon  34.29MB
 Step 1/10 : FROM ubuntu:latest
