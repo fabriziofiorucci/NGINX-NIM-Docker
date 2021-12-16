@@ -5,7 +5,8 @@ ARG BUILD_WITH_COUNTER=false
 RUN apt-get update
 
 RUN apt-get install -y -q build-essential git nano curl jq
-RUN if [ "$BUILD_WITH_COUNTER" = "true" ] ; then apt-get install -y python3-pip python3-dev python3-simplejson python3-requests python3-flask; fi
+RUN if [ "$BUILD_WITH_COUNTER" = "true" ] ; then apt-get install -y python3-pip python3-dev python3-simplejson; fi
+RUN if [ "$BUILD_WITH_COUNTER" = "true" ] ; then pip3 install fastapi uvicorn requests pandas xlsxwriter jinja2; fi
 
 RUN mkdir deployment
 
