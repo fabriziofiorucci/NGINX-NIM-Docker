@@ -3,7 +3,7 @@
 ## Description
 
 This repo creates a docker image for NGINX Instance Manager 1.x (NIM, https://docs.nginx.com/nginx-instance-manager/) so that it can be run on Kubernetes/Openshift.
-The image can optionally be built with NGINX Instance Counter support (see https://github.com/fabriziofiorucci/NGINX-InstanceCounter)
+The image can optionally be built with F5 Telemetry Tracker support (see https://github.com/fabriziofiorucci/F5-Telemetry-Tracker)
 
 ## How to build
 
@@ -21,7 +21,7 @@ for instance:
 ./scripts/buildNIM.sh ./nim-files/nginx-manager_1.0.4-415830014_amd64.deb your.registry.tld/nginx-nim:tag true
 ```
 
-this builds the image and pushes it to a private registry. The last parameter (to be set to either "true" or "false") specifies if NGINX Instance Counter (https://github.com/fabriziofiorucci/NGINX-InstanceCounter) shall be included in the image being built
+this builds the image and pushes it to a private registry. The last parameter (to be set to either "true" or "false") specifies if NGINX Instance Counter (https://github.com/fabriziofiorucci/F5-Telemetry-Tracker) shall be included in the image being built
 
 6. Edit manifests/0.nginx-nim.yaml and specify the correct image by modifying the "image" line. Additionally modify the "env:" section if you need NGINX Instance Counter to push instances data to a remote collector
 
@@ -58,7 +58,7 @@ image: your.registry.tld/nginx-nim:tag
 ```
 NIM GUI: http://nginx-nim.nginx.ff.lan
 NIM gRPC port: nginx-nim.nginx.ff.lan:31100
-Instance counter REST API (if enabled at build time - see the documentation at https://github.com/fabriziofiorucci/NGINX-InstanceCounter):
+Instance counter REST API (if enabled at build time - see the documentation at https://github.com/fabriziofiorucci/F5-Telemetry-Tracker):
 - http://nginx-nim.nginx.ff.lan/counter/instances
 - http://nginx-nim.nginx.ff.lan/counter/metrics
 - Push mode (configured through env variables in manifests/0.nginx-nim.yaml)
