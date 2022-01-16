@@ -14,16 +14,16 @@ The image can optionally be built with F5 Telemetry Tracker support (see https:/
 5. Build NIM Docker image using:
 
 ```
-./scripts/buildNIM.sh [NIM_DEBFILE] [target Docker image name] [counter enabled (true|false)]
+./scripts/buildNIM.sh [NIM_DEBFILE] [target Docker image name] [F5 Telemetry Tracker enabled (true|false)]
 
 for instance:
 
 ./scripts/buildNIM.sh ./nim-files/nginx-manager_1.0.4-415830014_amd64.deb your.registry.tld/nginx-nim:tag true
 ```
 
-this builds the image and pushes it to a private registry. The last parameter (to be set to either "true" or "false") specifies if NGINX Instance Counter (https://github.com/fabriziofiorucci/F5-Telemetry-Tracker) shall be included in the image being built
+this builds the image and pushes it to a private registry. The last parameter (to be set to either "true" or "false") specifies if F5 Telemetry Tracker (https://github.com/fabriziofiorucci/F5-Telemetry-Tracker) shall be included in the image being built
 
-6. Edit manifests/0.nginx-nim.yaml and specify the correct image by modifying the "image" line. Additionally modify the "env:" section if you need NGINX Instance Counter to push instances data to a remote collector
+6. Edit manifests/0.nginx-nim.yaml and specify the correct image by modifying the "image" line. Additionally modify the "env:" section if you need F5 Telemetry Tracker to push instances data to a remote collector
 
 ```
 image: your.registry.tld/nginx-nim:tag
@@ -31,7 +31,7 @@ image: your.registry.tld/nginx-nim:tag
 
 ```
         env:
-          ### Instance counter Push mode
+          ### F5 Telemetry Tracker Push mode
           - name: STATS_PUSH_ENABLE
             #value: "true"
             value: "false"
@@ -58,9 +58,9 @@ image: your.registry.tld/nginx-nim:tag
 ```
 NIM GUI: http://nginx-nim.nginx.ff.lan
 NIM gRPC port: nginx-nim.nginx.ff.lan:31100
-Instance counter REST API (if enabled at build time - see the documentation at https://github.com/fabriziofiorucci/F5-Telemetry-Tracker):
-- http://nginx-nim.nginx.ff.lan/counter/instances
-- http://nginx-nim.nginx.ff.lan/counter/metrics
+F5 Telemetry Tracker REST API (if enabled at build time - see the documentation at https://github.com/fabriziofiorucci/F5-Telemetry-Tracker):
+- http://nginx-nim.nginx.ff.lan/f5tt/instances
+- http://nginx-nim.nginx.ff.lan/f5tt/metrics
 - Push mode (configured through env variables in manifests/0.nginx-nim.yaml)
 ```
 
@@ -117,7 +117,7 @@ nginx-nim-78df44bdb-8vdr7   1/1     Running   0          20s   10.244.1.58   f5-
 NIM GUI is now reachable at:
 - Web GUI: http://nginx-nim.nginx.ff.lan
 - gRPC: nginx-nim.nginx.ff.lan:31100
-- Instance counter: http://nginx-nim.nginx.ff.lan/counter/instances and http://nginx-nim.nginx.ff.lan/counter/metrics and push mode
+- F5 Telemetry Tracker: http://nginx-nim.nginx.ff.lan/f5tt/instances and http://nginx-nim.nginx.ff.lan/f5tt/metrics and push mode
 
 ## Stopping NIM
 

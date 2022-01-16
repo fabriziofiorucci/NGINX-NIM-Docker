@@ -22,7 +22,7 @@ spec:
           containerPort: 10000
         - name: http
           containerPort: 11000
-        - name: instancecounter
+        - name: f5tt
           containerPort: 5000
         volumeMounts:
         - name: nim-config
@@ -32,7 +32,7 @@ spec:
           mountPath: /etc/nginx-manager/nginx-manager.lic
           subPath: nginx-manager.lic
         env:
-          ### Instance counter Push mode
+          ### F5 Telemetry Tracker Push mode
           - name: STATS_PUSH_ENABLE
             #value: "true"
             value: "false"
@@ -64,7 +64,7 @@ spec:
   ports:
   - name: http
     port: 11000
-  - name: instancecounter
+  - name: f5tt
     port: 5000
   selector:
     app: nginx-nim
@@ -111,14 +111,14 @@ spec:
                 name: nginx-nim
                 port:
                   number: 11000
-          - path: /counter/metrics
+          - path: /f5tt/metrics
             pathType: Prefix
             backend:
               service:
                 name: nginx-nim
                 port:
                   number: 5000
-          - path: /counter/instances
+          - path: /f5tt/instances
             pathType: Prefix
             backend:
               service:

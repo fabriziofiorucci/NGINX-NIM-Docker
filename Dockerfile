@@ -18,12 +18,12 @@ RUN rm /deployment/nim.deb
 WORKDIR /deployment
 RUN if [ "$BUILD_WITH_COUNTER" = "true" ] ; then touch /deployment/counter.enabled; fi
 RUN if [ "$BUILD_WITH_COUNTER" = "true" ] ; then git clone https://github.com/fabriziofiorucci/F5-Telemetry-Tracker; fi
-RUN if [ "$BUILD_WITH_COUNTER" = "true" ] ; then cp F5-Telemetry-Tracker/nginx-instance-counter/app.py .; fi
-RUN if [ "$BUILD_WITH_COUNTER" = "true" ] ; then cp F5-Telemetry-Tracker/nginx-instance-counter/bigiq.py .; fi
-RUN if [ "$BUILD_WITH_COUNTER" = "true" ] ; then cp F5-Telemetry-Tracker/nginx-instance-counter/nim.py .; fi
-RUN if [ "$BUILD_WITH_COUNTER" = "true" ] ; then cp F5-Telemetry-Tracker/nginx-instance-counter/nms.py .; fi
-RUN if [ "$BUILD_WITH_COUNTER" = "true" ] ; then cp F5-Telemetry-Tracker/nginx-instance-counter/nc.py .; fi
-RUN if [ "$BUILD_WITH_COUNTER" = "true" ] ; then cp F5-Telemetry-Tracker/nginx-instance-counter/cveDB.py .; fi
+RUN if [ "$BUILD_WITH_COUNTER" = "true" ] ; then cp F5-Telemetry-Tracker/f5tt/app.py .; fi
+RUN if [ "$BUILD_WITH_COUNTER" = "true" ] ; then cp F5-Telemetry-Tracker/f5tt/bigiq.py .; fi
+RUN if [ "$BUILD_WITH_COUNTER" = "true" ] ; then cp F5-Telemetry-Tracker/f5tt/nim.py .; fi
+RUN if [ "$BUILD_WITH_COUNTER" = "true" ] ; then cp F5-Telemetry-Tracker/f5tt/nms.py .; fi
+RUN if [ "$BUILD_WITH_COUNTER" = "true" ] ; then cp F5-Telemetry-Tracker/f5tt/nc.py .; fi
+RUN if [ "$BUILD_WITH_COUNTER" = "true" ] ; then cp F5-Telemetry-Tracker/f5tt/cveDB.py .; fi
 RUN if [ "$BUILD_WITH_COUNTER" = "true" ] ; then rm -rf F5-Telemetry-Tracker; fi
 
 WORKDIR /data

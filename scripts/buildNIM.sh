@@ -2,7 +2,7 @@
 
 if [ "$3" = "" ]
 then
-	echo "$0 [nim-debfile] [image name] [counter enabled (true|false)]"
+	echo "$0 [nim-debfile] [image name] [F5 Telemetry Tracker enabled (true|false)]"
 	exit
 fi
 
