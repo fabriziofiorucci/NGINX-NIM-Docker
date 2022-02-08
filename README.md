@@ -37,7 +37,7 @@ image: your.registry.tld/nginx-nim:tag
             value: "false"
           - name: STATS_PUSH_MODE
             value: CUSTOM
-            #value: NGINX_PUSH
+            #value: PUSHGATEWAY
           - name: STATS_PUSH_URL
             value: "http://192.168.1.5/callHome"
             #value: "http://pushgateway.nginx.ff.lan"
