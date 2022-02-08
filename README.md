@@ -1,5 +1,7 @@
 # NGINX Instance Manager - Docker image
 
+This repository is archived. NGINX Instance Manager 1.x is outdated by 2.x releases, please use https://github.com/fabriziofiorucci/NGINX-NIM2-Docker instead
+
 ## Description
 
 This repo creates a docker image for NGINX Instance Manager 1.x (NIM, https://docs.nginx.com/nginx-instance-manager/) so that it can be run on Kubernetes/Openshift.
