@@ -144,13 +144,13 @@ env:
   - name: NIM_PASSWORD
     value: nimadmin
   - name: NIM_LICENSE
-    value: "<BASE64_ENCODED_LICENSE_FILE>"
+    value: "<BASE64_ENCODED_JWT_LICENSE_FILE>"
 ```
 
 To base64-encode the license file the following command can be used:
 
 ```
-base64 -w0 NIM_LICENSE_FILENAME.lic
+base64 -w0 license.jwt
 ```
 
 Additionally, parameters user by NGINX Instance Manager to connect to ClickHouse can be configured:
