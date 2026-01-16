@@ -1,8 +1,10 @@
+# This repository has been archived, see [official NGINX Demos](https://github.com/nginx/nginx-demos/tree/main/nginx-instance-manager/docker-deployment)
+
 # NGINX Instance Manager for Docker
 
 This repository helps deploying NGINX Instance Manager on containerized clusters by creating a docker image.
 
-It is also available as part of [official NGINX Demos](https://github.com/nginxinc/NGINX-Demos/tree/master/nginx-nim-docker)
+It is also available as part of [official NGINX Demos](https://github.com/nginx/nginx-demos/tree/main/nginx-instance-manager/docker-deployment)
 
 ## Docker image creation
 
